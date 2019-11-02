@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% block importação %}
+    {% load crispy_forms_tags %}
+{% endblock %}
+
+{% block titulo %}
+    Editar Perfil de {{user.nome}}
+{% endblock titulo %}
+
+
+{% block header_direita %}
+    {% include 'core/includes/header_direita_logado.html' %}
+{% endblock %}
+
+{% block cards %}
+<!--Conteiner Principal -->
+<div class="container">
+	<!-- Linha principal -->
+	<div class="row border my-2 py-2">
+		<!-- Coluna -->
+		<div class="col-lg-6 col-sm-12 mx-auto">
+                 <!-- Logo -->
+                <div class="p-3 mx-auto rounded">
+                      <p class="h2 text-center my-auto cyan-text">
+                        <i class="fas fa-user-edit"></i>	
+                          Editar Meu Perfil
+                      </p>
+                </div>
+                <!-- Logo -->
+
+                {% if user.is_authenticated %}
+                    {% include 'core/includes/formulario.html' %}
+                {% endif %}
+		</div>
+		<!-- Coluna -->  
+	</div>
+	<!-- Linha principal -->
+</div>
+<!-- Conteiner Principal -->
+{% endblock cards %}

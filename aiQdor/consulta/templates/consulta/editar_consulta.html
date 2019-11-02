@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% block imports %}
+    {% load static %}
+	{% load crispy_forms_tags %}
+{% endblock %}
+
+
+{% block titulo %}
+	Cadastro
+{% endblock %}
+
+{% block header_direita %}
+	{% if user.is_authenticated %}
+		{% include "core/includes/header_direita_logado.html" %}
+	{% else %}
+		{% include "core/includes/header_direita.html" %}
+	{% endif %}
+{% endblock header_direita %}
+
+{% block cards %}
+<!--Conteiner Principal -->
+<div class="container">
+	<!-- Linha principal -->
+	<div class="row border my-2 py-2">
+		<!-- Coluna -->
+		<div class="col-lg-6 col-sm-12 mx-auto">
+			{% if user.is_authenticated %}
+
+				{% include 'core/includes/formulario.html' %}
+
+			{% else %}	
+
+			{% endif %}	
+		</div>
+		<!-- Coluna -->  
+	</div>
+	<!-- Linha principal -->
+</div>
+<!-- Conteiner Principal -->
+{% endblock %}

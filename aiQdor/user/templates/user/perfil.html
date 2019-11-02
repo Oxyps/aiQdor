@@ -1,0 +1,80 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    Perfil de {{user.nome}}
+{% endblock titulo %}
+
+{% block header_direita %}
+    {% include 'core/includes/header_direita_logado.html' %}
+{% endblock %}
+
+{% block cards %}
+<!--Conteiner Principal -->
+<div class="container">
+	<!-- Linha principal -->
+	<div class="row border my-2 py-2">
+		<!-- Coluna -->
+		<div class="col-lg-6 col-sm-12 mx-auto">
+                 <!-- Logo -->
+                <div class="p-3 mx-auto rounded">
+                      <p class="h2 text-center my-auto cyan-text">
+                        <i class="far fa-address-card mr-2"></i> 	
+                           Meu Perfil
+                      </p>
+                  </div>
+                  <!-- Logo -->
+                  <ul class="list-group">
+                        <li class="list-group-item">
+                          <div class="md-v-line"></div><i class="fas fa-signature mx-2"></i>
+                          <b class="text-info">Nome:</b>
+                          {{user.nome}}
+                        </li>
+                        <li class="list-group-item">
+                            <div class="md-v-line"></div><i class="far fa-envelope mx-2"></i>
+                            <b class="text-info">Email:</b>
+                            {{user.email}}
+                        </li> 
+                        <li class="list-group-item">
+                                <div class="md-v-line"></div><i class="far fa-id-badge mx-2 "></i>
+                                <b class="text-info">CPF:</b>
+                                {{user.CPF}}
+                        </li>
+                        <li class="list-group-item">
+                                <div class="md-v-line"></div><i class="fas fa-mobile-alt mx-2"></i>
+                                <b class="text-info">Celular:</b>
+                                {{user.celular}}
+                        </li>        
+                        <li class="list-group-item">
+                                <div class="md-v-line"></div><i class="fas fa-home mx-2"></i>
+                                <b class="text-info">Endereço:</b>
+                                {{user.endereco}}
+                        </li>
+                        <li class="list-group-item">                
+                            <div class="md-v-line"></div><i class="fas fa-gift mx-2"></i> 
+                            <b class="text-info">Data de Nascimento:</b>
+                            {{user.dataNascimento}}
+                        </li> 
+                        <li class="list-group-item">
+                            <a class="
+                                text-center
+                                mx-auto
+                                btn btn-primary
+                                my-2 my-sm-0 
+                                btn-md
+                                border-white 
+                                border rounded
+                                btn-block
+                                w-50"
+                                href="{% url 'perfil-edit' %}">
+                                <i class="fas fa-user-edit mr-2"></i>
+                                Editar Perfil
+                            </a>
+                        </li>
+                  </ul>
+		</div>
+		<!-- Coluna -->  
+	</div>
+	<!-- Linha principal -->
+</div>
+<!-- Conteiner Principal -->
+{% endblock cards %}

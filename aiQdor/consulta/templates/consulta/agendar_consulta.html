@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+
+{% block imports %}
+    {% load static %}
+	{% load crispy_forms_tags %}
+{% endblock %}
+
+
+{% block titulo %}
+	Cadastro
+{% endblock %}
+
+{% block header_direita %}
+	{% if user.is_authenticated %}
+		{% include "core/includes/header_direita_logado.html" %}
+	{% else %}
+		{% include "core/includes/header_direita.html" %}
+	{% endif %}
+{% endblock header_direita %}
+
+{% block cards %}
+<!--Conteiner Principal -->
+<div class="container">
+	<!-- Linha principal -->
+	<div class="row border my-2 py-2">
+		<!-- Coluna -->
+		<div class="col-lg-6 col-sm-12 mx-auto">
+			{% if user.is_authenticated %}
+				
+				<!-- Logo -->
+				<div class="p-3 mx-auto rounded">
+					<p class="h2 text-center my-auto cyan-text">
+						<i class="fas fa-laptop-medical mr-1" id="iconLogo"></i> 	
+						aiQdor
+					</p>
+				</div>
+				<!-- Logo -->
+			
+				<!-- Texto pré labels -->
+				<div class="border p-3 my-3 mx-auto rounded  aqua-gradient lighten-3">
+					<p class="h4 text-center my-auto text-white">Agende sua Consulta</p>
+				</div>
+					<!-- Texto pré labels -->
+
+				{% include 'core/includes/formulario.html' %}
+
+			{% else %}	
+
+				{% include 'consulta/includes/aviso_consulta.html' %}
+
+			{% endif %}	
+		</div>
+		<!-- Coluna -->  
+	</div>
+	<!-- Linha principal -->
+</div>
+<!-- Conteiner Principal -->
+{% endblock %}

@@ -1,0 +1,44 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{{ form.media }}
+
+<!-- Formulário -->
+<form method="POST" class="border border-light p-5">
+
+            
+    {% csrf_token %}
+            
+    <!--{% bootstrap_form form %}-->
+    <!-- Logo -->
+    <div class="p-3 mx-auto rounded">
+        <p class="h2 text-center my-auto cyan-text">
+            <i class="fas fa-laptop-medical mr-1" id="iconLogo"></i> 	
+            aiQdor
+        </p>
+    </div>
+        <!-- Logo -->
+
+    <!-- Texto pré labels -->
+    <div class="p-3 my-3 mx-auto rounded cyan darken-2">
+        <p class="h4 text-center my-auto text-white">Cadastre-se no Sistema</p>
+    </div>
+    <!-- Texto pré labels -->
+
+
+    {% bootstrap_form form %}
+
+    <!-- Botão de logar -->    
+    <button class="btn btn-primary btn-block my-4 w-75 mx-auto" type="submit">Cadastrar-se</button>
+    
+    <!-- Link para se registrar -->
+    <div class="text-center">
+        <p>Já tem uma conta?
+            Faça <a href="{% url 'login' %}">login.</a>
+        </p>
+    </div>
+    <!-- Link para se registrar -->
+    
+</form>
+<!--Formulário -->

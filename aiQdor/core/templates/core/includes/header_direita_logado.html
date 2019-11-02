@@ -1,0 +1,63 @@
+<!-- Canto direito da Header quando se está logado-->
+<!-- Nav Principal -->
+<div class="collapse navbar-collapse" id="navbarHeader">
+
+    <!-- Lista de botões -->
+    <ul class="navbar-nav ml-auto">
+
+          
+
+          <!-- Itens da Lista de Botões -->
+          <li class="nav-item ml-2 ml-sm-auto">  
+            <!-- Mensagem do Usuario Logado -->
+            <a class="
+                    btn
+                    cyan darken-2
+                    btn-rounded 
+                    my-2 my-sm-0
+                    border-white
+                    rounded border
+                "
+                role="button" 
+                id="btnLog">
+              Bem vindo <b>{{ user.nome }}</b>!!
+            </a>
+            <!-- Mensagem do Usuario Logado -->  
+            <a class="
+                    btn
+                    cyan darken-2
+                    btn-rounded 
+                    my-2 my-sm-0
+                    border-white
+                    rounded border
+                "
+                role="button" 
+                id="btnLog" 
+                href="{% url 'perfil' %}">  
+            <i class="far fa-address-card"></i>
+              Meu Perfil
+            </a>
+            <a class="
+                    btn
+                    cyan darken-2
+                    btn-rounded 
+                    my-2 my-sm-0
+                    border-white
+                    rounded border
+                "
+                role="button" 
+                id="btnLog" 
+                href="{% url 'logout' %}">  
+            <i class="fas fa-sign-out-alt"></i>
+              <b class="ml-2">
+                  Sair
+              </b>
+            </a>  
+        </li>
+        <!-- Itens da Lista de Botões -->
+
+    </ul>
+    <!-- Lista de botões --> 
+
+</div>
+<!-- Nav Principal --> 

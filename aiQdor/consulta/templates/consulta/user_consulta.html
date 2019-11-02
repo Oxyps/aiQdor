@@ -1,0 +1,155 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    Consultas de {{ user.nome }}
+{% endblock titulo %}
+
+{% block header_direita %}
+     {% include 'core/includes/header_direita_logado.html' %}
+{% endblock header_direita %}
+
+{% block cards %}
+<!-- Conteiner -->
+<div class="container">
+        <!-- Card deck -->
+        <div class="card-deck my-5 text-center">
+            {% if usuario_consulta|length > 0 %}
+                {% for uc in usuario_consulta %}
+                    <!-- Define o Card -->
+                    <div class="card border">
+                        <!-- Define o  Corpo do Card -->
+                        <div class="card-body">
+                            <h5 class="card-title card-header my-1 text-center">Com {{ uc.dentistaCRO }}</h5>
+                            <!-- Tabela Responsiva -->
+                            <div class="table-responsive">
+                                    <!-- Tabela -->
+                                    <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="py-auto p-1"><i class="fas fa-calendar-day"></i> </th>
+                                            <th class="py-auto p-1"><i class="far fa-clock "></i></th>
+                                            <th class="py-auto p-1"><i class="fas fa-user-md "></i></th>
+                                            <th class="py-auto p-1"><i class="fas fa-file-medical"></i></th>
+                                            <th class="py-auto p-1"><i class="fas fa-dollar-sign"></i></th>
+                                            <th class="py-auto p-1"><i class="fas fa-file-medical-alt"></i> </th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">Data</th>
+                                            <th scope="col">Hora</th>
+                                            <th scope="col">Dentista</th>
+                                            <th scope="col">Procedimentos</th>
+                                            <th scope="col"></i>Preço</th>
+                                            <th scope="col"></i>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <!-- Linha -->
+                                            <td>
+                                                {{ uc.dataC }}
+                                            </td>
+                                            <!-- Linha -->
+                                            <td>
+                                                {{ uc.horaC }}
+                                            </td>
+                                            <!-- Linha -->
+                                            <td>
+                                                {{ uc.dentistaCRO }}
+                                            </td>
+                                            <!-- Linha -->
+                                            <td>
+                                                {% for p in uc.procedimentos.all %}
+                                                        {{p.nome}};
+                                                {% endfor %}
+                                            </td>
+                                            <!-- Linha -->
+                                            <td>
+                                                {{ uc.precoC }}
+                                            </td>
+                                            <!-- Linha -->
+                                            <td>
+                                                {{ uc.statusConsulta }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                    <!-- Tabela -->
+                            </div>
+                            <!-- Tabela Responsiva --> 
+                        </div>
+                        <!-- Define o  Corpo do Card -->
+
+                        <!-- Define o  Rodapé do Card -->
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                <div class="btn-group mx-auto" role="group" aria-label="Third group">   
+                                    <a class="
+                                        btn
+                                        btn-rounded
+                                        btn btn-danger
+                                        my-2 my-sm-0 
+                                        btn-md
+                                        border-white 
+                                        text-white
+                                        border rounded " 
+                                        href="consulta_desmarcar/{{ uc.id }}">
+                                        <i class="fas fa-calendar-times mr-2"></i>
+                                            Desmarcar Consulta 
+                                    </a>
+
+                                    <a class="
+                                        btn
+                                        btn-rounded
+                                        btn btn-primary
+                                        my-2 my-sm-0 
+                                        ml-2
+                                        btn-md
+                                        border-white 
+                                        text-white
+                                        border rounded" 
+                                        href="consulta/{{uc.id}}">
+                                        <i class="far fa-edit mr-2"></i>
+                                            Editar Consulta 
+                                    </a> 
+                                </div>    
+                            </small>
+                        </div>
+                        <!-- Define o  Rodapé do Card -->
+                        
+                    </div>  
+                    <!-- Define o Card -->
+                {% endfor %}
+
+            {% else %}
+                
+                    <h1>Vc n tem consultas agendadas </h1>
+
+            {% endif %}    
+        </div>
+        <!-- Card deck -->  
+</div>
+<!-- Conteiner -->
+{% endblock cards %}
+
+
+{% block depois_cards %}
+    <div class="border pt-3 ml-5 mx-auto w-25">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pg-blue justify-content-center">
+                <li class="page-item mx-1">
+                    {% if usuario_consulta.has_previous %}
+                        <a href="?page={{ usuario_consulta.previous_page_number }}"><i class="fas fa-arrow-left mx-1"></i></a> 
+                    {% endif %}
+                </li>
+                <li class="page-item">
+                    {{ usuario_consulta.number }} de {{ usuario_consulta.paginator.num_pages}}
+                </li>
+                <li class="page-item">
+                    {% if usuario_consulta.has_next %}
+                        <a href="?page={{ usuario_consulta.next_page_number }}"><i class="fas fa-arrow-right mx-1"></i></a>
+                    {% endif %}
+                </li>  
+            </ul>
+        </nav>
+    </div>     
+{% endblock %}

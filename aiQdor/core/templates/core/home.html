@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+   Inicio
+{% endblock %}
+
+{% block header_direita %}
+  <!-- Conteudo que fica a direita, dentro da navbar -->
+  {% if user.is_authenticated %}
+    {% include "./includes/header_direita_logado.html" %}
+  {% else %}  
+    {% include "./includes/header_direita.html" %}
+  {% endif %}
+{% endblock %}
+
+{% block antes_cards %}
+  <!-- Conteudo_1 antes do meio -->
+  {% include "core/includes/antes_cards.html" %}
+{% endblock%}
+
+{% block cards %}
+ <!-- Conteudo_2 dentro do meio -->
+  {% include "core/includes/cards.html" %}
+{% endblock %}
+
+
+{% block depois_cards %}
+  <!-- Conteudo_3 depois do meio -->
+{% endblock %}

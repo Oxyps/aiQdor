@@ -1,0 +1,124 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+	Dentista
+{% endblock %}
+
+{% block header_direita %}
+    {% if user.is_authenticated %}
+        {% include "core/includes/header_direita_logado.html" %}
+    {% else %}
+        {% include "core/includes/header_direita.html" %}
+    {% endif %}
+{% endblock %}
+
+{% block antes_cards %}
+    <!-- Conteudo exibido antes dos Cards-->
+    <!-- Cria o  Layout de 'Preço' -->
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        
+        <!-- Linha -->
+        <div class="row">
+
+            <!-- Coluna Responsiva -->
+            <div class="col-lg-4 col-sm-12 mx-auto">
+
+                
+                <!-- Titulo -->
+                <h1 class="display-4 mx-2 cyan-text">Dentista</h1>
+                <!-- Embaixo do Titulo -->
+                <p class="lead text-center ">
+                    Aqui está a lista de Dentistas que trabalham conosco. Pode
+                    agendar uma consulta com um deles, clicando <a href="{% url 'agendar-consulta' %}"><b>aqui</b></a>.
+                </p>
+                
+            </div>
+            <!-- /Coluna Responsiva -->
+
+        </div>
+        <!-- /Linha -->
+        
+    </div>
+    <!-- /Cria o  Layout de 'Preço' -->
+{% endblock %}
+
+{% block cards %}
+    <!-- Conteiner -->
+    <div class="container">
+            <!-- Card deck -->
+            <div class="card-deck my-5 text-center">
+                {% for dentista in dentistas %}
+                    <!-- Define o Card -->
+                    <div class="card border">
+                        <!-- Define o  Corpo do Card -->
+                        <div class="card-body">
+                            <h5 class="card-title card-header my-1 text-center aqua-gradient lighten-3 text-white">{{dentista.nome}}</h5>
+                            <!-- Div de tabela responsiva-->
+                            <div class="table-responsive">
+                                <!-- tabela -->
+                                <table class="table">
+                                    <!-- 1 Dado -->
+                                    <tr>
+                                        <th scope="col">
+                                            <p class="card-text">
+                                                <i class="fas fa-diagnoses"></i>    
+                                                <b>Especialidade:</b> {{dentista.especialidade}} 
+                                            </p>
+                                        </th>
+                                    </tr>
+                                    <!-- 1 Dado -->
+
+                                    <!-- 2 Dado -->
+                                    <tr>
+                                        <th scope="col">
+                                            <p class="card-text ">
+                                                <i class="fas fa-barcode"></i>
+                                                <b>CRO:</b> {{ dentista.CRO }}
+                                            </p>  
+                                        </th>
+                                    </tr>
+                                    <!-- 2 Dado -->
+                                </table>
+                                <!-- tabela -->
+                            </div>
+                            <!-- Div de tabela responsiva-->     
+                        </div>
+                        <!-- Define o  Corpo do Card -->
+
+                        <!-- Define o  Rodapé do Card -->
+                        <div class="card-footer">
+                            <small class="text-muted">                      
+                            </small>
+                        </div>
+                        <!-- Define o  Rodapé do Card -->
+                        
+                    </div>  
+                    <!-- Define o Card -->
+                {% endfor %}
+            </div>
+            <!-- Card deck -->  
+    </div>
+    <!-- Conteiner -->
+{% endblock %}
+
+{% block depois_cards %}
+    <div class="border pt-3 ml-5 mx-auto w-25">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pg-blue justify-content-center">
+                <li class="page-item mx-1">
+                    {% if dentistas.has_previous %}
+                        <a href="?page={{ dentistas.previous_page_number }}"><i class="fas fa-arrow-left mx-1"></i></a> 
+                    {% endif %}
+                </li>
+                <li class="page-item">
+                    {{ dentistas.number }} de {{ dentistas.paginator.num_pages}}
+                </li>
+                <li class="page-item">
+                    {% if dentistas.has_next %}
+                        <a href="?page={{ dentistas.next_page_number }}"><i class="fas fa-arrow-right mx-1"></i></a>
+                    {% endif %}
+                </li>  
+            </ul>
+        </nav>
+    </div>     
+{% endblock %}

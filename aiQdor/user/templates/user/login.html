@@ -1,0 +1,75 @@
+{% extends 'core/base.html' %}
+
+{% block imports %}
+    {% load static %}
+    {% load crispy_forms_tags %}
+{% endblock %}
+
+{% block titulo %}
+	Login
+{% endblock %}
+
+{% block header_direita %}
+	{% include "core/includes/header_direita.html" %}
+{% endblock %}
+
+{% block cards %}
+<!--Conteiner Principal -->
+<div class="container">
+	<!-- Linha principal -->
+	<div class="row border my-2 py-2">
+		<!-- Coluna -->
+		<div class="col-lg-6 col-sm-12 mx-auto">
+		  <!-- Formulário -->
+		  <form method="POST" class="border border-light p-5">
+
+			  <!-- Logo -->
+			  <div class="p-3 mx-auto rounded">
+				  <p class="h2 text-center my-auto cyan-text">
+				  	  <i class="fas fa-laptop-medical mr-1" id="iconLogo"></i> 	
+					  aiQdor
+				  </p>
+			  </div>
+			  <!-- Logo -->
+
+			  <!-- Texto pré labels -->
+			  <div class="p-3 my-3 mx-auto rounded cyan darken-2">
+				  <p class="h4 text-center my-auto text-white">Entre no Sistema</p>
+			  </div>
+			  <!-- Texto pré labels -->
+	  		
+			  {% csrf_token %}
+			  {{ form|crispy }}
+
+			  <!-- Linha pós Labels -->
+			  <div class="d-flex justify-content-between">
+				  <div>
+					  <div class="custom-control custom-checkbox">
+						  <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+					  </div>
+				  </div>
+				  <div>
+					  <a href="">Esqueceu a senha?</a>
+				  </div>
+			  </div>
+			  <!-- Linha pós Labels -->
+	  
+			  <!-- Botão de logar -->    
+			  <button class="btn btn-primary btn-block my-4 w-75 mx-auto" type="submit">Login</button>
+	  
+			  <!-- Link para se registrar -->
+			  <div class="text-center">
+				  <p>Não tem uma conta?
+					  <a href="{% url 'cadastro' %}">Cadastre-se</a>
+				  </p>
+			  </div>
+			  <!-- Link para se registrar -->
+		  </form>
+		  <!--Formulário -->
+		</div>
+		<!-- Coluna -->  
+	</div>
+	<!-- Linha principal -->
+</div>
+<!-- Conteiner Principal -->
+{% endblock %}

@@ -1,0 +1,80 @@
+<!--Conteiner principal-->
+<div class="container"> 
+    <!--Card Deck-->
+    <div class="card-deck my-5 text-center">   
+            <!-- Card 1--> 
+            <div class="card"> 
+                <!-- Card 1 Corpo-->
+                <div class="card-body">
+                    <h5 class="card-title card-header my-1">Agende sua consulta</h5>
+                    <p class="card-text py-3">
+                        Escolha um Dentista, Data e Horário, e caso queria, pode optar por selecionar
+                        alguns dos procedimentos básicos.
+                    </p>  
+                </div>
+                <!-- Card 1 Corpo-->
+                    
+                <!-- Card 1 Rodape-->
+                <div class="card-footer ">
+                    <small class="text-muted">
+                    <a href="{% url 'agendar-consulta' %}" class="btn btn-primary border-white btn-block rounded border mx-auto w-75">
+                            <i class="far fa-calendar-plus mr-2"></i>
+                        Agendar consulta
+                    </a>
+                    </small>        
+                </div>
+                <!-- Card 1 Rodape-->
+            </div>
+            <!-- Card 1-->
+
+            <!--Card 2-->
+            <div class="card">
+                <!-- Card 2 Corpo-->
+                <div class="card-body">
+                    <h5 class="card-title card-header my-1">Dentistas</h5>
+                    <p class="card-text py-3">Veja os Dentistas que trabalham conosco.</p>
+                </div>
+                <!-- Card 2 Corpo-->
+
+                <!-- Card 2 Rodape-->
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <a href=" {% url 'lista-dentistas' %} " class="btn btn-primary border-white btn-block rounded border mx-auto w-75 my-auto">
+                        <i class="fas fa-clipboard-list mr-2"></i>
+                        Lista de Dentistas
+                        </a>                
+                    </small>      
+                </div>
+                <!-- Card 2 Rodape-->
+            </div>
+            <!--Card 2-->  
+        <!-- -->
+        <!-- Responsivo -->
+        
+        {% if user.is_authenticated %}  
+                <!--Card 2-->
+                <div class="card">
+                    <!-- Card 2 Corpo-->
+                    <div class="card-body">
+                        <h5 class="card-title card-header my-1">Minhas Consultas</h5>
+                        <p class="card-text py-3">Veja suas consultas agendadas.</p>
+                    </div>
+                    <!-- Card 2 Corpo-->
+
+                    <!-- Card 2 Rodape-->
+                    <div class="card-footer">
+                        <small class="text-muted">
+                             <a href="{% url 'user-consulta' %}" class="btn btn-primary border-white btn-block rounded border mx-auto w-75 my-auto">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                minhas Consultas
+                            </a>                
+                        </small>      
+                    </div>
+                    <!-- Card 2 Rodape-->
+                </div>
+                <!--Card 2-->
+            {% endif %}                     
+    </div>
+    <!--Card Deck--> 
+</div>
+<!--Conteiner principal-->

@@ -1,0 +1,54 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{{ form.media }}
+
+<form method="POST">
+    <!-- Lista formulario -->
+    <ul class="list-group">
+        {% csrf_token %}
+        <li class="list-group-item">
+            {% bootstrap_form form %} 
+        </li>       
+
+        <!-- Botôes agrupados  -->
+        <li class="list-group-item">
+            <!-- Div da Linha -->
+            <div class="row">  
+                <a class="
+                    text-center
+                    mx-auto
+                    btn btn-danger
+                    my-2 my-sm-0 
+                    btn-md
+                    border-white 
+                    border rounded
+                    btn-block
+                    w-50"
+                    href="{% url 'core-home' %}">
+                    <b>Cancelar</b>
+                    <i class="ml-2 fas fa-times"></i>
+                </a>            
+
+                <button class="
+                    text-center
+                    mx-auto
+                    btn btn-primary
+                    my-2 my-sm-0 
+                    btn-md
+                    border-white 
+                    border rounded
+                    btn-block
+                    w-50"
+                    type="submit">
+                    <b>Confirmar</b>
+                    <i class="ml-2 fas fa-check"></i>
+                </button>
+            </div>
+            <!-- Div da Linha -->
+        </li> 
+        <!-- Botôes agrupados  -->   
+    </ul>
+    <!-- Lista formulario -->    
+</form>        
